@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import ColorBox from './ColorBox';
+import './Pallete.css';
 
 class Pallete extends Component{
 
@@ -11,11 +13,18 @@ class Pallete extends Component{
 
         render()
         {
+            const colorBoxes=this.props.colors.map(c=>{
+                    
+                return  <ColorBox background={c.color} name={c.name}/>
+            });
+
+          
+
             return(
                 <div className="Pallete">
-                    <h1>Pallete</h1>
-
-                    <div className="Pallete-colors"></div>
+                    <div className="Pallete-colors">
+                        {colorBoxes}
+                    </div>
 
                 </div>
             );
