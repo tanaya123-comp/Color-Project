@@ -13,7 +13,7 @@ class Pallete extends Component{
 
         render()
         {
-            const colorBoxes=this.props.colors.map(c=>{
+            const colorBoxes=this.props.seed.colors.map(c=>{
                     
                 return  <ColorBox background={c.color} name={c.name}/>
             });
