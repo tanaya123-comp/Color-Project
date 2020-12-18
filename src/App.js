@@ -6,6 +6,7 @@ import Pallete from './Pallete';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 import {Switch,Route} from 'react-router-dom';
+import { Palette } from '@material-ui/icons';
 
 class App extends Component{
 
@@ -15,13 +16,21 @@ class App extends Component{
 
     }
 
+    findPalette(id){
+
+      return seedColors.find(function(palette){
+         return palette.id===id;
+       });
+     }
 
     render()
     {
+       
+
       return(
           <Switch>
             <Route exact path="/" render={()=><h1>list of Component</h1>}/>
-            <Route exact path="/palette/:id" render={()=><h1>Individual Component</h1>}/>
+            <Route exact path="/palette/:id" render={(routeProps)=><Pallete palette={generatePalette(this.findPalette(routeProps.match.params.id))}/>}/>
           </Switch>
 
           // <div>
