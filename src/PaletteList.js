@@ -14,11 +14,11 @@ class PaletteList extends Component{
         {
             return(
                 <div>
-                    <MiniPalette/>
+                   
                     {this.props.palettes.map(palette => (
                                 <p>
-                                        <Link to={`/palette/${palette.id}`}>{palette.paletteName}</Link>
-                                    
+                              
+                                     <MiniPalette {...palette}/>
                                 </p>
                                     
                 

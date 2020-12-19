@@ -4,29 +4,44 @@ import { withStyles } from '@material-ui/styles';
 
 
 const styles ={
-    main:{
-        background:"purple",
-        border:"3px solid teal",
-        "& h1":{
-            color:"white",
+   root:{
+        backgroundColor:"white",
+        border:"1px solid black",
+        padding:"0.5rem",
+        position:"relative",
+        overflow:"hidden",
+        "& hover":{
+            cursor:"pointer"
         }
-    },
-    secondary:{
-        background:"blue",
 
-    }
+   },
+   colors:{
+        backgroundColor:"grey",
+   },
+   title:{
+        display:"flex",
+        justifyContent:"space-between",
+        alignItems:"centre",
+        margin:"0",
+        color:"black",
+        paddingTop:"0.5rem",
+        fontSize:"1rem",
+        position:"relative",
+   },
+   emoji:{
+        marginLeft:"0.5rem",
+        fontSize:"1.5rem",
+   }
 
 };
 
 function MiniPalette(props){
-        const {classes} =props;
+        const {classes,paletteName,emoji} =props;
         console.log(classes);
     return(
-        <div className={classes.main}>
-                 <h1>MiniPalette</h1>
-                 <section className={classes.secondary}>
-                    <h2>Mini Palette 2</h2>
-                 </section>
+        <div className={classes.root}>
+            <div className={classes.colors}></div>
+            <h5 className={classes.title}>{paletteName} <span className={classes.emoji}>{emoji}</span></h5>
         </div>
        
     );
