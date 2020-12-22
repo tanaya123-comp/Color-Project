@@ -52,9 +52,9 @@ const styles ={
 function MiniPalette(props){
         const {classes,paletteName,emoji,colors} = props;
         console.log(colors);
-        const miniColorBoxes=colors.map(color=>{
+        const miniColorBoxes=colors.map(color=>(
                <div className={classes.miniColors} style={{background:color.color}} key={color.name}/>
-        });
+        ));
         
         
         
