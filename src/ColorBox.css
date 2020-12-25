@@ -8,6 +8,14 @@
     margin-bottom: -0.3px;
 }
 
+.SingleColorBox .ColorBox{
+    height: 50%;
+}
+
+.SingleColorBox .goback{
+    background-color: black;
+}
+
 .copy-button{
     width: 100px;
     height:30px;
