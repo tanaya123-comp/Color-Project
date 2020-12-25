@@ -36,6 +36,14 @@
     opacity: 0;
 }
 
+.light-text{
+    color:white;
+}
+
+.ColorBox .dark-text{
+    color:black;
+}
+
 .copy-button:hover{
     opacity: 1;
     transition: 0.5s;
