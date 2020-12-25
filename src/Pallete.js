@@ -35,7 +35,7 @@ class Pallete extends Component{
             const { level ,format } =this.state;
             const colorBoxes=colors[level].map(c=>{
                     
-                return  <ColorBox background={c[format]} name={c.name} key={c.id} id={c.id} paletteId={id}/>
+                return  <ColorBox background={c[format]} name={c.name} key={c.id} id={c.id} paletteId={id} showLink={true}/>
             });
 
           

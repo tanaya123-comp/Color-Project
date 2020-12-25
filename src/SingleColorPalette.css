@@ -1,0 +1,10 @@
+.Pallete{
+    height: 100vh;   
+    display: flex;
+    flex-direction: column;
+}
+
+.Pallete-colors{
+    height: 90%;
+    
+}
