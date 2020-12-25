@@ -4,6 +4,7 @@ import './Pallete.css';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Navbar from './Navbar';
+import PaletteFooter from './PaletteFooter';
 
 class Pallete extends Component{
 
@@ -43,17 +44,14 @@ class Pallete extends Component{
             return(
                 <div className="Pallete">
                     
-                    <Navbar level={level} changeLevel={this.changeLevel} changeFormat={this.changeFormat}/>
+                    <Navbar level={level} changeLevel={this.changeLevel} changeFormat={this.changeFormat} showAllColors={true}/>
                    
                     <div className="Pallete-colors">
                         {colorBoxes}
                     </div>
                     <br/>
                     <br/>
-                    <footer className="Palette-footer">
-                            {paletteName}
-                            <span className="emoji">{emoji}</span>
-                    </footer>
+                    <PaletteFooter paletteName={paletteName} emoji={emoji}/>
 
                 </div>
             );
