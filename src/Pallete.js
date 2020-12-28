@@ -10,6 +10,15 @@ import { withStyles } from '@material-ui/styles';
 
 const styles={
 
+    Palette:{
+        height: "100vh",   
+    display: "flex",
+    flexDirection: "column",
+    },
+    Colors:{
+        height: "90%",
+    }
+
 };
 
 class Pallete extends Component{
@@ -40,6 +49,7 @@ class Pallete extends Component{
         {
             const { colors,paletteName,emoji,id } =this.props.palette;
             const { level ,format } =this.state;
+            const { classes } =this.props;
             const colorBoxes=colors[level].map(c=>{
                     
                 return  <ColorBox background={c[format]} name={c.name} key={c.id} id={c.id} paletteId={id} showLink={true}/>
@@ -48,11 +58,11 @@ class Pallete extends Component{
           
 
             return(
-                <div className="Pallete">
+                <div className={classes.Palette}>
                     
                     <Navbar level={level} changeLevel={this.changeLevel} changeFormat={this.changeFormat} showAllColors={true}/>
                    
-                    <div className="Pallete-colors">
+                    <div className={classes.Colors}>
                         {colorBoxes}
                     </div>
                     <br/>

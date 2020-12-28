@@ -5,7 +5,52 @@ import './SingleColorPalette.css';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
+import chroma from 'chroma-js';
 
+const styles={
+
+        Palette:{
+            height: "100vh",   
+        display: "flex",
+        flexDirection: "column",
+        },
+        Colors:{
+            height: "90%",
+        },
+        goBack:{
+                width: "20%",
+                height: "50%",
+                margin: "0 auto",
+                display: "inline-block",
+                position: "relative",
+                cursor: "pointer",
+                marginBottom: "-0.3px",
+                opacity:1,
+                backgroundColor:"black",
+                "& a":{
+                        color:"white",
+                        width: "100px",
+            height:"30px",
+            position: "absolute",
+            display: "inline-block",
+            top:"50%",
+            left:"50%",
+            marginLeft: "-50px",
+            marginTop: "-15px",
+            textAlign: "center",
+            outline: "none",
+            background: "rgba(255,255,255,0.3)",
+            fontSize: "1rem",
+            lineHeight: "30px",
+            textTransform: "uppercase",
+            border: "none",
+            
+                }
+               
+        }
+    
+    };
 
 class SingleColorPalette extends Component{
 
@@ -47,16 +92,17 @@ class SingleColorPalette extends Component{
         }
 
         render(){
+                const { classes } =this.props;
                 const colorboxes=this._shades.map(c=>(
                         <ColorBox key={c.id} name={c.name} background={c[this.state.format]} showLink={false}/>
                 ));
 
                 return(
-                        <div className="SingleColorPalette Pallete">
+                        <div className={classes.Palette}>
                                 <Navbar changeFormat={this.changeFormat} showAllColors={false} />
-                                <div className="Pallete-colors">
+                                <div className={classes.Colors}>
                                         {colorboxes}
-                                        <div className="goback">
+                                        <div className={classes.goBack}>
                                         <Link to={`/palette/${this.props.palette.id}`} >Go Back</Link>
                                         </div>
                                        
@@ -69,4 +115,4 @@ class SingleColorPalette extends Component{
 
 }
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);
