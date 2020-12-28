@@ -5,6 +5,12 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
+import { withStyles } from '@material-ui/styles';
+
+
+const styles={
+
+};
 
 class Pallete extends Component{
 
@@ -59,4 +65,4 @@ class Pallete extends Component{
 
 }
 
-export default Pallete;
+export default withStyles(styles)(Pallete);
