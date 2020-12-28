@@ -1,25 +1,26 @@
 import React,{Component} from 'react';
 import ColorBox from './ColorBox';
-import './Pallete.css';
+
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
+import styles from './styles/PaletteStyle';
 import { withStyles } from '@material-ui/styles';
 
 
-const styles={
+// const styles={
 
-    Palette:{
-        height: "100vh",   
-    display: "flex",
-    flexDirection: "column",
-    },
-    Colors:{
-        height: "90%",
-    }
+//     Palette:{
+//         height: "100vh",   
+//     display: "flex",
+//     flexDirection: "column",
+//     },
+//     Colors:{
+//         height: "90%",
+//     }
 
-};
+// };
 
 class Pallete extends Component{
 
