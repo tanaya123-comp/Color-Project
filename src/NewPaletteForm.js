@@ -12,13 +12,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 240;
+import {ChromePicker} from 'react-color';
+import Button from "@material-ui/core/Button";
+
+const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,6 +128,14 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         
         </div>
+        <Divider />
+        <Typography variant="h4">Design Your Palette</Typography>
+        <div>
+          <Button variant="contained" color="secondary">Clear Palette</Button>
+          <Button variant="contained" color="primary">Random Color</Button>
+          </div>
+        <ChromePicker color="purple" onChangeComplete={newColor=>console.log(newColor)}/>
+        <Button variant="contained" color="primary">Add Color</Button>
         {/* <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
