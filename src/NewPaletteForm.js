@@ -83,13 +83,18 @@ const styles = theme => ({
 });
 
 class NewPaletteForm extends Component {
+
+  static defaultProps={
+    maxColors:20
+  }
+
  constructor(props){
    super(props);
    this.state={
      open:true,
      currentColor:"teal",
      newColorName:"",
-     colors:[],
+     colors:this.props.palettes[0].colors,
      newPaletteName:"",
    };
 
@@ -102,6 +107,10 @@ class NewPaletteForm extends Component {
    this.handleSubmit=this.handleSubmit.bind(this);
 
    this.removeColor=this.removeColor.bind(this);
+
+   this.clearColors=this.clearColors.bind(this);
+
+   this.addRandomColor=this.addRandomColor.bind(this);
  }
   
  handleSubmit()
@@ -180,10 +189,22 @@ class NewPaletteForm extends Component {
     }))
   };
  
+  clearColors(){
+      this.setState({colors:[]});
+  }
+
+  addRandomColor(){
+    const allColors=this.props.palettes.map(p=>p.colors).flat();
+    var rand=Math.floor(Math.random()*allColors.length);
+    const randomColor=allColors[rand];
+    this.setState({colors:[...this.state.colors,randomColor]});
+    console.log(randomColor);
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes,maxColors } = this.props;
     const { open } = this.state;
+    const isPaletteFull=this.state.colors.length>=20;
 
     return (
       <div className={classes.root}>
@@ -233,8 +254,8 @@ class NewPaletteForm extends Component {
 
           <Typography variant='h4'>Design Your Palette</Typography>
           <div>
-            <Button variant='contained' color='secondary'>CLEAR PALETTE</Button>
-            <Button variant='contained' color='primary'>RANDOM COLOR</Button>
+            <Button variant='contained' color='secondary' onClick={this.clearColors}>CLEAR PALETTE</Button>
+            <Button variant='contained' color='primary' disabled={isPaletteFull} onClick={this.addRandomColor}>RANDOM COLOR</Button>
           </div>
           <ChromePicker color={this.state.currentColor} onChangeComplete={this.updateCurrentColor}/>
 
@@ -244,7 +265,15 @@ class NewPaletteForm extends Component {
             validators={['required', 'isColorNameUnique', 'isColorUnique']}
             errorMessages={['This field is required', 'Color name must be unique', 'Color already used']}/>
 
-            <Button variant='contained' color='primary' type="submit" style={{backgroundColor:this.state.currentColor}} >ADD COLOR</Button>
+            <Button 
+            variant='contained'
+             color='primary'
+              type="submit" 
+              disabled={isPaletteFull}
+              style={{backgroundColor:isPaletteFull?"grey": this.state.currentColor}}
+               >
+                 {isPaletteFull?"Palette Full":"Add Color"}
+                 </Button>
 
           </ValidatorForm>
 
