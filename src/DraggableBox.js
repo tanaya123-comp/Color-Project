@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Transform } from '@material-ui/icons';
+import {SortableElement} from 'react-sortable-hoc';
 
 
 const styles={
@@ -42,7 +43,7 @@ justifyContent:"space-between",
 
 };
 
- function DraggableBox(props) {
+const DraggableBox= SortableElement((props)=> {
 
     const {classes,name,handleClick,color}=props
     
@@ -61,6 +62,6 @@ justifyContent:"space-between",
     )
     
     
-}
+})
 
 export default withStyles(styles)(DraggableBox);
