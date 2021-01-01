@@ -48,7 +48,11 @@ root:{
     display: "none"
   },
   NavBtns:{
-
+      marginRight:"1rem",
+  },
+  buttons:{
+    margin:"0 0.5rem",
+    textDecoration:"none",
   }
 
 });
@@ -61,9 +65,12 @@ class PaletteFormNav extends Component{
             super(props);
             this.state={
                 newPaletteName:"",
+                isFormShowing:false,
             };
 
             this.handleChange=this.handleChange.bind(this);
+
+            this.showForm=this.showForm.bind(this);
         }
 
         componentDidMount(){
@@ -76,6 +83,10 @@ class PaletteFormNav extends Component{
 
         handleChange(evt){
             this.setState({[evt.target.name]:evt.target.value});
+        }
+
+        showForm(){
+          this.setState({isFormShowing:true});
         }
 
         render()
@@ -117,9 +128,15 @@ validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name re
 <Button variant="contained" color="primary" type="submit">Save Palette</Button>
 
 </ValidatorForm> */}
-<PaletteMetaForm palettes={this.props.palettes} handleSubmit={this.props.handleSubmit}/>
-<Link to="/"><Button variant="contained" color="secondary">Go Back</Button></Link>
 
+      <Link to="/"><Button variant="contained" className={classes.buttons} color="secondary">Go Back</Button></Link>
+      <Button variant="contained" className={classes.buttons} color="primary" onClick={this.showForm}>
+        Save
+      </Button>
+
+        {this.state.isFormShowing && 
+          <PaletteMetaForm palettes={this.props.palettes} handleSubmit={this.props.handleSubmit}/>
+        }
 </div>
 
         </AppBar>

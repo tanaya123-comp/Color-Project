@@ -14,7 +14,7 @@ class PaletteMetaForm extends Component{
             super(props);
 
             this.state={
-                open:false,
+                open:true,
                 newPaletteName:"",
             }
 
@@ -50,31 +50,28 @@ class PaletteMetaForm extends Component{
 
                 return(
                         <div>
-                                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-        Open form dialog
-      </Button>
+                               
       <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Create Palette</DialogTitle>
+        <ValidatorForm onSubmit={()=>this.props.handleSubmit(newPaletteName)}>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+            Enter Palette Name to create a Palette ,make sure it is unique!
           </DialogContentText>
-          <ValidatorForm onSubmit={()=>this.props.handleSubmit(newPaletteName)}>
+          
 <TextValidator value={this.state.newPaletteName} onChange={this.handleChange} name="newPaletteName"  label="Palette Name" 
 validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name required','palette name must be unique']}/>
-<Button variant="contained" color="primary" type="submit">Save Palette</Button>
 
-</ValidatorForm>
+
+
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={this.handleClose} color="primary">
-            Subscribe
-          </Button>
+          <Button variant="contained" color="primary" type="submit">Save Palette</Button>
         </DialogActions>
+        </ValidatorForm>
       </Dialog>
 
                         </div>
