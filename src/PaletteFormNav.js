@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import PaletteMetaForm from './PaletteMetaForm';
 
 import Button from "@material-ui/core/Button";
 
@@ -60,7 +61,7 @@ class PaletteFormNav extends Component{
             super(props);
             this.state={
                 newPaletteName:"",
-            }
+            };
 
             this.handleChange=this.handleChange.bind(this);
         }
@@ -110,12 +111,13 @@ class PaletteFormNav extends Component{
           <div className={classes.NavBtns}>
 
           
-<ValidatorForm onSubmit={()=>this.props.handleSubmit(newPaletteName)}>
+{/* <ValidatorForm onSubmit={()=>this.props.handleSubmit(newPaletteName)}>
 <TextValidator value={this.state.newPaletteName} onChange={this.handleChange} name="newPaletteName"  label="Palette Name" 
 validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name required','palette name must be unique']}/>
 <Button variant="contained" color="primary" type="submit">Save Palette</Button>
 
-</ValidatorForm>
+</ValidatorForm> */}
+<PaletteMetaForm palettes={this.props.palettes} handleSubmit={this.props.handleSubmit}/>
 <Link to="/"><Button variant="contained" color="secondary">Go Back</Button></Link>
 
 </div>
