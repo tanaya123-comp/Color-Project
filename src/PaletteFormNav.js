@@ -71,6 +71,8 @@ class PaletteFormNav extends Component{
             this.handleChange=this.handleChange.bind(this);
 
             this.showForm=this.showForm.bind(this);
+
+            this.hideForm=this.hideForm.bind(this);
         }
 
         componentDidMount(){
@@ -87,6 +89,10 @@ class PaletteFormNav extends Component{
 
         showForm(){
           this.setState({isFormShowing:true});
+        }
+
+        hideForm(){
+          this.setState({isFormShowing:false});
         }
 
         render()
@@ -135,7 +141,7 @@ validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name re
       </Button>
 
         {this.state.isFormShowing && 
-          <PaletteMetaForm palettes={this.props.palettes} handleSubmit={this.props.handleSubmit}/>
+          <PaletteMetaForm palettes={this.props.palettes} hideForm={this.hideForm} handleSubmit={this.props.handleSubmit}/>
         }
 </div>
 
