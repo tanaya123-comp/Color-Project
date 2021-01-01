@@ -18,9 +18,14 @@ class PaletteMetaForm extends Component{
             this.state={
                 open:true,
                 newPaletteName:"",
+                stage:"form",
             }
 
             this.handleChange=this.handleChange.bind(this);
+
+            this.emojiPicker=this.emojiPicker.bind(this);
+
+            this.savePalette=this.savePalette.bind(this);
         }
 
         componentDidMount(){
@@ -43,6 +48,20 @@ class PaletteMetaForm extends Component{
             this.setState({[evt.target.name]:evt.target.value});
         }
 
+          emojiPicker(){
+              this.setState({stage:"emoji"});
+          }
+
+          savePalette(emoji){
+
+              const newPalette={
+                paletteName:this.state.newPaletteName,
+                emoji:emoji.native,
+              }
+
+              this.props.handleSubmit(newPalette);
+          }
+
           
 
 
@@ -53,32 +72,36 @@ class PaletteMetaForm extends Component{
             const {hideForm,handleSubmit} =this.props;
 
                 return(
-                        <div>
+                    <div>
+
+                    <Dialog open={this.state.stage==="emoji"} onClose={hideForm}>
+                    <Picker onSelect={this.savePalette} />
+                    </Dialog>
                                
-      <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title" onClose={hideForm}>
-        <DialogTitle id="form-dialog-title">Create Palette</DialogTitle>
-        <ValidatorForm onSubmit={()=>handleSubmit(newPaletteName)}>
-        <DialogContent>
-          <DialogContentText>
-            Enter Palette Name to create a Palette ,make sure it is unique!
-          </DialogContentText>
+                    <Dialog open={this.state.stage==="form"} onClose={this.handleClose} aria-labelledby="form-dialog-title" onClose={hideForm}>
+                    <DialogTitle id="form-dialog-title">Create Palette</DialogTitle>
+                    <ValidatorForm onSubmit={this.emojiPicker}>
+                    <DialogContent>
+                    <DialogContentText>
+                      Enter Palette Name to create a Palette ,make sure it is unique!
+                    </DialogContentText>
           
-          <Picker />
+                   
 
-          <TextValidator value={this.state.newPaletteName} onChange={this.handleChange} name="newPaletteName"  label="Palette Name" 
-          validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name required','palette name must be unique']}/>
+                  <TextValidator value={this.state.newPaletteName} onChange={this.handleChange} name="newPaletteName"  label="Palette Name" 
+                    validators={['required','isPaletteNameUnique']} errorMessages={['Palette Name required','palette name must be unique']}/>
 
 
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={hideForm} color="primary">
-            Cancel
-          </Button>
-          <Button variant="contained" color="primary" type="submit">Save Palette</Button>
-        </DialogActions>
-        </ValidatorForm>
-      </Dialog>
+                  </DialogContent>
+                  <DialogActions>
+                   <Button onClick={hideForm} color="primary">
+                   Cancel
+                  </Button>
+                  <Button variant="contained" color="primary" type="submit">Save Palette</Button>
+                  </DialogActions>
+                   </ValidatorForm>
+                  </Dialog>
 
                         </div>
                 );
