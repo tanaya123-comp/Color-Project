@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles/MiniPaletteStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -50,19 +50,35 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 // };
 
-function MiniPalette(props){
-        const {classes,paletteName,emoji,colors} = props;
-        console.log(colors);
-        const miniColorBoxes=colors.map(color=>(
-               <div className={classes.miniColors} style={{background:color.color}} key={color.name}/>
-        ));
+class MiniPalette extends Component{
+
+        constructor(props){
+            super(props);
+
+            this.deletePalette=this.deletePalette.bind(this);
+        }
         
+        deletePalette(e){
+            e.stopPropagation();
+            this.props.handleDelete(this.props.id);
+        }
         
+        render(){
+            const {classes,paletteName,emoji,colors} = this.props;
+            console.log(colors);
+            const miniColorBoxes=colors.map(color=>(
+                   <div className={classes.miniColors} style={{background:color.color}} key={color.name}/>
+            ));
         
     return(
-        <div className={classes.root} onClick={props.handleClick}>
+
+        <div className={classes.root} onClick={this.props.handleClick}>
             <div className={classes.delete}>
-                <DeleteIcon className={classes.deleteIcon} styles={{transition:"all 0.3s ease-in-out"}}/>
+                <DeleteIcon 
+                className={classes.deleteIcon} 
+                styles={{transition:"all 0.3s ease-in-out"}}
+                onClick={this.deletePalette}
+                />
             </div>
             <div className={classes.coloring}>
             {miniColorBoxes}
@@ -71,7 +87,7 @@ function MiniPalette(props){
         </div>
        
     );
-
+    }
 
 }
 
