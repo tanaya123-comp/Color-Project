@@ -38,7 +38,10 @@ root:{
   buttons:{
     margin:"0 0.5rem",
     textDecoration:"none",
-  }
+  },
+  hide: {
+    display: "none"
+  },
 
 });
 
