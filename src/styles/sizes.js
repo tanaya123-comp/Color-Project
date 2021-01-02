@@ -20,12 +20,12 @@ export default {
 
     down(size){
         const sizes={
-            xs:"576px",
-            sm:"768px",
-            md:"992px",
-            lg:"1200px",
+            xs:"575.98px",
+            sm:"767.98px",
+            md:"991.98px",
+            lg:"1199.98px",
         }
-        return `@media (min-width: ${sizes[size]})`
+        return `@media (max-width: ${sizes[size]})`
     }   
 }
 

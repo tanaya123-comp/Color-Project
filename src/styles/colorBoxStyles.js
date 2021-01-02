@@ -13,15 +13,15 @@ export default {
         "&:hover button":{
                 opacity:1,
         },
-        [sizes.down("md")]:{
+        [sizes.down("lg")]:{
                 width:"25%",
-                height: props=>(props.showLink?"20%":"50%"),
-        },
-        [sizes.down("sm")]:{
-                width:"50%",
-                height: props=>(props.showLink?"10%":"50%"),
+                height: props=>(props.showLink?"20%":"33.3333%"),
         },
         [sizes.down("md")]:{
+                width:"50%",
+                height: props=>(props.showLink?"10%":"20%"),
+        },
+        [sizes.down("xs")]:{
                 width:"100%",
                 height: props=>(props.showLink?"5%":"10%"),
         }
@@ -110,6 +110,9 @@ width: "100%",
 textAlign: "center",
 marginBottom: "0",
 padding: "1 rem",
+[sizes.down("xs")]:{
+        fontSize:"5rem",
+}
 },
 "& p":{
 fontSize:" 2 rem",
