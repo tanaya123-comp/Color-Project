@@ -4,6 +4,7 @@ import MiniPalette from './MiniPalette';
 import styles from './styles/PaletteList';
 import { withStyles } from '@material-ui/styles';
 
+
 // const styles={
 
 //     root:{
@@ -65,7 +66,7 @@ class PaletteList extends Component{
                    
                    <div className={this.props.classes.container}>
                        <nav className={this.props.classes.nav}>
-                            <h1>React Colors</h1>
+                            <h1 className={this.props.classes.heading}>React Colors</h1>
                             <Link to='/palette/new'>Create New Palette</Link>
                        </nav>
                        <div className={this.props.classes.palettes}>

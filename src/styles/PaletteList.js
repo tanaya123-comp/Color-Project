@@ -1,4 +1,5 @@
 import sizes from './sizes';
+import bg from './bg.svg';
 
 export default {
     
@@ -9,6 +10,9 @@ export default {
             display:"flex",
             alignItems:"flex-start",
             justifyContent:"centre",
+            backgroundColor:"#1e8feb",
+            backgroundImage:`url(${bg})`,
+            overflow:"scroll",
         },
         container:{
             width:"80%",
@@ -36,6 +40,9 @@ export default {
                 color:"white",
             }
         },
+        heading:{
+            fontSize:"2rem",
+        },
         palettes:{
             boxSizing:"border-box",
             width:"100%",
@@ -47,7 +54,7 @@ export default {
             },
             [sizes.down("sm")]:{
                 gridTemplateColumns:"repeat(2,50%)",
-                gridGap:"1rem",
+                gridGap:"1.4rem",
             },
         }
     
