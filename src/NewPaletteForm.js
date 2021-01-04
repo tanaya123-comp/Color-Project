@@ -21,6 +21,8 @@ import PaletteFormNav from './PaletteFormNav';
 
 import ColorPickerForm from './ColorPickerForm';
 
+import seedColors from './seedColors';
+
 
 
 //import DraggableColorBox from './DraggableColorBox';
