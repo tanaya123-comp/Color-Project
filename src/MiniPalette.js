@@ -56,6 +56,8 @@ class MiniPalette extends Component{
             super(props);
 
             this.deletePalette=this.deletePalette.bind(this);
+
+            this.handleClickGotToPalette=this.handleClickGotToPalette.bind(this);
         }
         
         deletePalette(e){
@@ -63,6 +65,11 @@ class MiniPalette extends Component{
             this.props.openDialog(this.props.id);
         }
         
+
+        handleClickGotToPalette(){
+            this.props.handleClick(this.props.id);
+        }
+
         render(){
             const {classes,paletteName,emoji,colors} = this.props;
             console.log(colors);
@@ -72,7 +79,7 @@ class MiniPalette extends Component{
         
     return(
 
-        <div className={classes.root} onClick={this.props.handleClick}>
+        <div className={classes.root} onClick={this.handleClickGotToPalette}>
             <div className={classes.delete}>
                 <DeleteIcon 
                 className={classes.deleteIcon} 

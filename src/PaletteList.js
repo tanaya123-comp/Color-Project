@@ -76,6 +76,8 @@ class PaletteList extends Component{
             this.closeDialog=this.closeDialog.bind(this);
         
             this.handleDelete=this.handleDelete.bind(this);
+
+            this.gotoPalette=this.gotoPalette.bind(this);
         }
 
         gotoPalette(id)
@@ -128,7 +130,7 @@ class PaletteList extends Component{
                                       {...palette}
                                      //  handleDelete={this.props.deletePalette} 
                                         openDialog={this.openDialog}
-                                       handleClick={()=>this.gotoPalette(palette.id)}
+                                       handleClick={this.gotoPalette}
                                         key={palette.id} 
                                         id={palette.id}
                                         />
